@@ -1,19 +1,24 @@
-MDS 指北手册
+yangqiphp的笔记本
 ===============
 
-Project background
+PHP
 --------
 
 * [背景](about.md)
 * [主要功能](feature.md)
 
-Log address
+Yii2.0
 ---------
 
 * [Alert Email](log-email.md)
 * [Api Request](log-api-request.md)
 
-Development reference
+Linux
 -----------
 
-* [入门手册](development.md)
+* [入门手册](/linux/commonly.md)
+
+Git
+----------
+
+* [Quick setup](/git/start.md)
