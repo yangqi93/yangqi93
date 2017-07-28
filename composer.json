@@ -1,0 +1,16 @@
+{
+    "require": {
+        "yiisoft/yii2-apidoc": "^2.1",
+        "dflydev/markdown": "^1.0",
+        "michelf/php-markdown": "^1.7"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}
