@@ -1,6 +1,8 @@
-> 原文地址：https://segmentfault.com/a/1190000000489528
-
 ##Access默认的日志格式为例分析：
+
+> 本文作者： icattlecoder  
+  本文链接： https://segmentfault.com/a/1190000000489528 ->   
+  
 $remote_addr - $remote_user [$time_local] "$request" $status $body_bytes_sent "$http_referer" "$http_user_agent"
 
 各字段的含义分别是：
