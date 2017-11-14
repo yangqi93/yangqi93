@@ -12,11 +12,11 @@
 `docker images -a` 包括中间层  
 `docker images ubuntu` 部分镜像  
 
-1. 删除镜像
+1. 删除镜像  
 `docker rmi [选项] <镜像1> [<镜像2> ...]` 
 
-
-
+1. 构建镜像  
+`docker build -t nginx:v3 .` 在当前目录构建
 
 #### 容器操作
 
