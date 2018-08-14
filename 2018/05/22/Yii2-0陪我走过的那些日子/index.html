@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>yii2.0陪我走过的那些日子 | Nutshell&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Yii2.0" />
+  
+  
+  
+  
+  <meta name="description" content="参考：深入理解Yii2.0 www.digpage.com  Yii 使用经历和感想我在学习阶段使用过ThinkPHP, 自工作伊始就一直使用YII，大多数工作局限在MVC。相当多的代码是参考文档一点点凑起来的，只需要少量的代码就可以完成很多工作，甚至Yii还提供了代码生成工具Gii。对于这些代码知其用不知其所以然，反正觉得Yii真是方便。">
+<meta name="keywords" content="Yii2.0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yii2.0陪我走过的那些日子">
+<meta property="og:url" content="https://nutshell.com/2018/05/22/Yii2-0陪我走过的那些日子/index.html">
+<meta property="og:site_name" content="Nutshell&#39;s blog">
+<meta property="og:description" content="参考：深入理解Yii2.0 www.digpage.com  Yii 使用经历和感想我在学习阶段使用过ThinkPHP, 自工作伊始就一直使用YII，大多数工作局限在MVC。相当多的代码是参考文档一点点凑起来的，只需要少量的代码就可以完成很多工作，甚至Yii还提供了代码生成工具Gii。对于这些代码知其用不知其所以然，反正觉得Yii真是方便。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-22T06:10:27.706Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Yii2.0陪我走过的那些日子">
+<meta name="twitter:description" content="参考：深入理解Yii2.0 www.digpage.com  Yii 使用经历和感想我在学习阶段使用过ThinkPHP, 自工作伊始就一直使用YII，大多数工作局限在MVC。相当多的代码是参考文档一点点凑起来的，只需要少量的代码就可以完成很多工作，甚至Yii还提供了代码生成工具Gii。对于这些代码知其用不知其所以然，反正觉得Yii真是方便。">
+  
+    <link rel="alternate" href="/atom.xml" title="Nutshell&#39;s blog" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/my.jpeg">
+  <link rel="apple-touch-icon" href="/css/images/my.jpeg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/my.jpeg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">主页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Yii2-0陪我走过的那些日子" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Yii2.0陪我走过的那些日子
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/05/22/Yii2-0陪我走过的那些日子/" class="article-date">
+	  <time datetime="2018-05-22T06:00:50.000Z" itemprop="datePublished">2018-05-22</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/编程思考/">编程思考</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>参考：深入理解Yii2.0 <a href="http://www.digpage.com" target="_blank" rel="noopener">www.digpage.com</a></p>
+</blockquote>
+<h4 id="Yii-使用经历和感想"><a href="#Yii-使用经历和感想" class="headerlink" title="Yii 使用经历和感想"></a>Yii 使用经历和感想</h4><p>我在学习阶段使用过ThinkPHP, 自工作伊始就一直使用YII，大多数工作局限在MVC。相当多的代码是参考文档一点点凑起来的，只需要少量的代码就可以完成很多工作，甚至Yii还提供了代码生成工具Gii。对于这些代码知其用不知其所以然，反正觉得Yii真是方便。<br><a id="more"></a></p>
+<p>这个框架对于生成基础的表单，数据展示也是一套一套的，但是想要进行修改时就比较头疼了，比如一个GridView, 当我想在某一列中加上一个class时就不知从何下手，并不知道他还有什么属性可以配置。在它有强大的类手册可以参考，这一点对我的开发帮助很大。</p>
+<p>在上面这个场景中，我们可以先找到 <code>yii\grid\GridView</code>，发现它有一个<code>$columns</code>属性可以配置，继而找到这个属性的类<code>yii\grid\DataColumn</code>，通过<code>$filterInputOptions</code>属性便可以自定义这个列的class了。这只是冰山一角，坑是永远填不完的，比如model中的行为是如何自动完成created_at和update_at的写入的呢？又是如何完成验证的呢？这些问题一个接一个。</p>
+<p>基于这些使用经验，隐约感觉到Yii的强大，就像是一辆汽车每一个零部件可追溯。源于同事的推荐，发现一个神奇的网站，<a href="http://www.digpage.com" target="_blank" rel="noopener">www.digpage.com</a> 看完它似醍醐灌顶，如此往复，任督二脉打通也指日可待。</p>
+<h4 id="基础指哪些以及它们之间的关联"><a href="#基础指哪些以及它们之间的关联" class="headerlink" title="基础指哪些以及它们之间的关联"></a>基础指哪些以及它们之间的关联</h4><p>Yii 基础指属性（Property），事件(Event)，行为(Behavior)。</p>
+<h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><p>属性构成了一切对象的基础。在Yii中很常见的配置就是各种属性。</p>
+<h5 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h5><p>事件模型就是设计模式中的“观察者模式”：当对象的状态发生了变化，那么这个对象可以将该事件通知其它对象。<br>为了使用事件模型，需要实现这三个步骤：<br>1、定义事件；<br>2、绑定事件句柄；<br>3、触发事件。<br>事件在Yii中无处不在，<code>beforeSave()</code>, <code>afterSave()</code>, <code>beforeValidate()</code>, <code>afterValidate()</code>… 一个请求周期中会触发n个事件，我们就可以利用这些事件搞事啦</p>
+<h5 id="行为"><a href="#行为" class="headerlink" title="行为"></a>行为</h5><p>行为可以将自己的属性和方法注入到要绑定的类中去，一个类还可以绑定多个行为，通过在行为中定义事件完成数据处理。</p>
+<p>自动完成 created_at 和 update_at 就是使用了<code>yii\behaviors\TimeStampBehavior</code>, 这个行为继承自<code>yii\behaviors\AttributeBehavior</code>， 这个类中定义了要处理的两个事件<code>beforeInsert()</code>, <code>beforeUpdate()</code> 以及它们要触发的方法(方法里就是给created_at/updated_at赋值), 当一个模型使用了TimeStampBehavior就可以自动处理created_at/updated_at啦</p>
+<h4 id="事件-行为的应用场景"><a href="#事件-行为的应用场景" class="headerlink" title="事件/行为的应用场景"></a>事件/行为的应用场景</h4><ol>
+<li>我想在请求过来的时候，先将请求的 IP 的记录到数据库，然后才进行对应的相应的请求处理。  </li>
+<li>当用户评论一篇文章时，可以触发一个评论对象添加（“add”）事件。  </li>
+<li>邮件程序对象成功发出消息时可触发 messageSent 事件。如想追踪成功发送的消息，可以附加相应追踪代码到 messageSent 事件。  </li>
+<li>用户登录成功后触发afterLogin事件。可以在该事件处绑定yii AfterLoginBehavior行为，更新用户信息</li>
+</ol>
+<p>参考：Yii事件使用业务场景 <a href="http://www.jianshu.com/p/da4c3cfe55fa" target="_blank" rel="noopener">http://www.jianshu.com/p/da4c3cfe55fa</a></p>
+<p>其实行为的最终目地还是绑定事件，这里有一个很清晰的例子：场景是在后台，每个用户操作了什么（也就是访问了那个链接），都会记录日志<br>访问： <a href="https://yii-china.org/topic/740" target="_blank" rel="noopener">https://yii-china.org/topic/740</a></p>
+<p>还有其它的应用场景请留言帮助我完善这篇博文。<br>关于事件的触发/绑定，行为的定义/绑定/解除强烈推荐大家看《深入理解Yii2.0》</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zNjM5MC8xMjkyNQ==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Yii2-0/">Yii2.0</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/25/Laravel-使用-API-Resources-Dingo-JWT-构建-api-踩过的坑/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Laravel 使用 API Resources &amp; Dingo &amp; JWT 构建 api 踩过的坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/12/Larave-学习中推荐参考的文章/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Larave 学习中推荐参考的文章</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Yii-使用经历和感想"><span class="nav-number">1.</span> <span class="nav-text">Yii 使用经历和感想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基础指哪些以及它们之间的关联"><span class="nav-number">2.</span> <span class="nav-text">基础指哪些以及它们之间的关联</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#属性"><span class="nav-number">2.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事件"><span class="nav-number">2.2.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#行为"><span class="nav-number">2.3.</span> <span class="nav-text">行为</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件-行为的应用场景"><span class="nav-number">3.</span> <span class="nav-text">事件/行为的应用场景</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2015 - 2018 Nutshell&#39;s blog All Rights Reserved. 蜀ICP备16012631号-2</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/categories" class="mobile-nav-link">分类</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-117443343-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1273659976&web_id=1273659976" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Nutshell&#39;s blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 yangqi All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/blog/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
