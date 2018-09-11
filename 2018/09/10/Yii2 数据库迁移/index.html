@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Nutshell&#39;s blog">
 <meta property="og:description" content="官方文档 db-migrations  本文基于版本 2.0.15, 主要是一些使用示例 迁移文件之初识一个数据库迁移文件记录了数据库的变更，增加或删除表、字段、索引，又或者是初始数据的写入。要保持开发者或环境间数据库结构一致，主要通过创建迁移和提交迁移这两部完成。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-11T03:16:08.667Z">
+<meta property="og:updated_time" content="2018-09-11T03:53:10.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yii2 数据库迁移">
 <meta name="twitter:description" content="官方文档 db-migrations  本文基于版本 2.0.15, 主要是一些使用示例 迁移文件之初识一个数据库迁移文件记录了数据库的变更，增加或删除表、字段、索引，又或者是初始数据的写入。要保持开发者或环境间数据库结构一致，主要通过创建迁移和提交迁移这两部完成。">
@@ -221,7 +221,7 @@
 <li>添加索引<br><code>$this-&gt;createIndex(&#39;author&#39;, self::TABLE_NAME, &#39;author&#39;);</code></li>
 <li>删除索引<br><code>$this-&gt;dropIndex(&#39;author&#39;, self::TABLE_NAME);</code></li>
 </ol>
-<h3 id="更快速方便的选择"><a href="#更快速方便的选择" class="headerlink" title="更快速方便的选择"></a>更快速方便的选择</h3><p>你也可以使用组件 <code>jamband/yii2-schemadump</code> 生成迁移代码，再复制到相应的up()/down()方法中<br><a href="https://github.com/jamband/yii2-schemadump" target="_blank" rel="noopener">jamband/yii2-schemadump</a></p>
+<h3 id="更快速方便的选择"><a href="#更快速方便的选择" class="headerlink" title="更快速方便的选择"></a>更快速方便的选择</h3><p>你也可以先创建数据库机构，然后使用组件 <code>jamband/yii2-schemadump</code> 分析生成迁移代码，再复制到相应的up()/down()方法中<br><a href="https://github.com/jamband/yii2-schemadump" target="_blank" rel="noopener">jamband/yii2-schemadump</a></p>
 
       
     </div>
