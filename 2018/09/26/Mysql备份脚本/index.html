@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mysql 备份脚本 | Nutshell&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Mysql" />
+  
+  
+  
+  
+  <meta name="description" content="定时备份数据库，删除过期备份">
+<meta name="keywords" content="Mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql 备份脚本">
+<meta property="og:url" content="https://nutshell.com/2018/09/26/Mysql备份脚本/index.html">
+<meta property="og:site_name" content="Nutshell&#39;s blog">
+<meta property="og:description" content="定时备份数据库，删除过期备份">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-27T01:15:20.020Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mysql 备份脚本">
+<meta name="twitter:description" content="定时备份数据库，删除过期备份">
+  
+    <link rel="alternate" href="/atom.xml" title="Nutshell&#39;s blog" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/my.jpeg">
+  <link rel="apple-touch-icon" href="/css/images/my.jpeg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/my.jpeg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">主页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="blog-Mysql备份脚本" style="width: 75%; float:left;" class="article article-type-blog" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Mysql 备份脚本
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/09/26/Mysql备份脚本/" class="article-date">
+	  <time datetime="2018-09-26T09:37:43.000Z" itemprop="datePublished">2018-09-26</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/环境配置/">环境配置</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>定时备份数据库，删除过期备份</p>
+</blockquote>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#备份目录</span></span><br><span class="line">backupDir=/home/yangqi/backup</span><br><span class="line"><span class="comment">#日志文件</span></span><br><span class="line"><span class="built_in">log</span>=<span class="variable">$&#123;backupDir&#125;</span>/log.txt</span><br><span class="line"></span><br><span class="line"><span class="comment">######### Mysql Config ##############</span></span><br><span class="line">host=<span class="string">"127.0.0.1"</span></span><br><span class="line">user=<span class="string">"root"</span></span><br><span class="line">pswd=<span class="string">"123"</span></span><br><span class="line">databases=(article)</span><br><span class="line"><span class="comment">#####################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#今天的日期及当前时间（小时）</span></span><br><span class="line">now=`date +%Y%m%d%H`</span><br><span class="line">hour=`date +%H`</span><br><span class="line"><span class="comment">#3天前的日期</span></span><br><span class="line">timeThreeDayAgo=`date +%Y%m%d%H --date=<span class="string">'-3 day'</span>`</span><br><span class="line">timeTowDayAgo=`date +%Y%m%d%H --date=<span class="string">'-2 day'</span>`</span><br><span class="line">timeOneDayAgo=`date +%Y%m%d%H --date=<span class="string">'-1 day'</span>`</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#开始备份</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$backupDir</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    mkdir <span class="string">"<span class="variable">$backupDir</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> database <span class="keyword">in</span> <span class="variable">$&#123;databases[@]&#125;</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"开始备份<span class="variable">$&#123;database&#125;</span> `date +%Y%m%d-%H%M%S`"</span> &gt;&gt; <span class="variable">$log</span></span><br><span class="line">    mysqldump --default-character-set=utf8mb4 --<span class="built_in">set</span>-gtid-purged=OFF -h<span class="variable">$&#123;host&#125;</span> -u<span class="variable">$&#123;user&#125;</span> -p<span class="variable">$&#123;pswd&#125;</span> <span class="variable">$&#123;database&#125;</span>| gzip &gt; <span class="variable">$&#123;backupDir&#125;</span>/<span class="variable">$&#123;database&#125;</span>-<span class="variable">$&#123;now&#125;</span>.sql.gz</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"成功备份<span class="variable">$&#123;database&#125;</span> 到<span class="variable">$&#123;backupDir&#125;</span>"</span> &gt;&gt; <span class="variable">$log</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#删除指定的备份</span></span><br><span class="line">    <span class="keyword">if</span> [ ! -f <span class="string">"<span class="variable">$&#123;backupDir&#125;</span>/<span class="variable">$&#123;database&#125;</span>-<span class="variable">$&#123;timeTenDayAgo&#125;</span>.sql.gz"</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"3天前备份不存在，无需删除"</span> &gt;&gt; <span class="variable">$log</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        rm -f <span class="variable">$&#123;backupDir&#125;</span>/<span class="variable">$&#123;database&#125;</span>-<span class="variable">$&#123;timeTenDayAgo&#125;</span>.sql.gz</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"删除3天前备份 <span class="variable">$&#123;database&#125;</span>-<span class="variable">$&#123;timeTenDayAgo&#125;</span>.sql.gz"</span> &gt;&gt; <span class="variable">$log</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#两天前删除00/12点备份</span></span><br><span class="line">    <span class="comment">#一天前删除00/06/12/18点备份</span></span><br><span class="line">    need1=(00 12 17)    </span><br><span class="line">    <span class="keyword">if</span> [[ <span class="variable">$&#123;need1[@]&#125;</span> =~ <span class="variable">$&#123;hour&#125;</span> ]]; <span class="keyword">then</span></span><br><span class="line">	<span class="keyword">if</span> [ -f <span class="string">"<span class="variable">$&#123;backupDir&#125;</span>/<span class="variable">$&#123;database&#125;</span>-<span class="variable">$&#123;timeTwoDayAgo&#125;</span>.sql.gz"</span> ]; <span class="keyword">then</span></span><br><span class="line">    	    rm -f <span class="variable">$&#123;backupDir&#125;</span>/<span class="variable">$&#123;database&#125;</span>-<span class="variable">$&#123;timeTwoDayAgo&#125;</span>.sql.gz</span><br><span class="line">	    <span class="built_in">echo</span> <span class="string">"删除2天前备份 <span class="variable">$&#123;database&#125;</span>-<span class="variable">$&#123;timeTwoDayAgo&#125;</span>.sql.gz"</span> &gt;&gt; <span class="variable">$log</span></span><br><span class="line">	<span class="keyword">fi</span>	</span><br><span class="line">	<span class="keyword">if</span> [ -f <span class="string">"<span class="variable">$&#123;backupDir&#125;</span>/<span class="variable">$&#123;database&#125;</span>-<span class="variable">$&#123;timeOneDayAgo&#125;</span>.sql.gz"</span> ]; <span class="keyword">then</span></span><br><span class="line">    	    rm -f <span class="variable">$&#123;backupDir&#125;</span>/<span class="variable">$&#123;database&#125;</span>-<span class="variable">$&#123;timeOneDayAgo&#125;</span>.sql.gz</span><br><span class="line">	    <span class="built_in">echo</span> <span class="string">"删除1天前备份 <span class="variable">$&#123;database&#125;</span>-<span class="variable">$&#123;timeOneDayAgo&#125;</span>.sql.gz"</span> &gt;&gt; <span class="variable">$log</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    need2=(06 18)</span><br><span class="line">    <span class="keyword">if</span> [[ <span class="variable">$&#123;need2[@]&#125;</span> =~ <span class="variable">$&#123;hour&#125;</span> ]]; <span class="keyword">then</span></span><br><span class="line">	<span class="keyword">if</span> [ -f <span class="string">"<span class="variable">$&#123;backupDir&#125;</span>/<span class="variable">$&#123;database&#125;</span>-<span class="variable">$&#123;timeTwoDayAgo&#125;</span>.sql.gz"</span> ]; <span class="keyword">then</span>    </span><br><span class="line">    	    rm -f <span class="variable">$&#123;backupDir&#125;</span>/<span class="variable">$&#123;database&#125;</span>-<span class="variable">$&#123;timeTwoDayAgo&#125;</span>.sql.gz</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">"删除2天前备份 <span class="variable">$&#123;database&#125;</span>-<span class="variable">$&#123;timeTwoDayAgo&#125;</span>.sql.gz"</span> &gt;&gt; <span class="variable">$log</span></span><br><span class="line">        <span class="keyword">fi</span>    </span><br><span class="line">    <span class="keyword">fi</span>    </span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"执行结束\n\n"</span> &gt;&gt; <span class="variable">$log</span></span><br></pre></td></tr></table></figure>
+<p>也许你需要区分系统<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#系统 os_name [Linux / Darwin(Mac OS)]</span></span><br><span class="line">os_name=`uname -s`</span><br><span class="line"><span class="comment">#今天的日期 Ymd</span></span><br><span class="line">today=`date +%Y%m%d`</span><br><span class="line"><span class="comment">#10天前的日期 根据系统区别获取</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$os_name</span>"</span> == <span class="string">"Linux"</span> ]; <span class="keyword">then</span></span><br><span class="line">    timeTenDayAgo=`date +%Y%m%d --date=<span class="string">'-10 day'</span>`</span><br><span class="line"><span class="keyword">elif</span> [ <span class="string">"<span class="variable">$os_name</span>"</span> == <span class="string">"Darwin"</span> ]; <span class="keyword">then</span></span><br><span class="line">    timeTenDayAgo=`date -v -10d +%Y%m%d`</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zNjM5MC8xMjkyNQ==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/25/Nginx-gzip-配置和性能测试/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Nginx gzip 配置和性能测试</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav">无</ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2015 - 2018 Nutshell&#39;s blog All Rights Reserved. 蜀ICP备16012631号-2</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/categories" class="mobile-nav-link">分类</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-117443343-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1273659976&web_id=1273659976" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Nutshell&#39;s blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 yangqi All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/blog/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
