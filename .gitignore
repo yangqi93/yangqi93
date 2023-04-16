@@ -1,2 +1,4 @@
 .idea/
 /_book/
+#*.md
+.DS_Store
