@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on HUGO.386</title>
-    <link>https://example.com/categories/</link>
-    <description>Recent content in Categories on HUGO.386</description>
+    <title>Categories on Yangqi&#39;s blog</title>
+    <link>https://yangqi.space/categories/</link>
+    <description>Recent content in Categories on Yangqi&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 16 Apr 2023 16:00:05 +0800</lastBuildDate><atom:link href="https://example.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Apr 2023 16:00:05 +0800</lastBuildDate><atom:link href="https://yangqi.space/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>raspi</title>
-      <link>https://example.com/categories/raspi/</link>
+      <link>https://yangqi.space/categories/raspi/</link>
       <pubDate>Sun, 16 Apr 2023 16:00:05 +0800</pubDate>
       
-      <guid>https://example.com/categories/raspi/</guid>
+      <guid>https://yangqi.space/categories/raspi/</guid>
       <description></description>
     </item>
     
