@@ -5,6 +5,9 @@
     <loc>https://yangqi.space/categories/</loc>
     <lastmod>2023-04-23T18:26:08+08:00</lastmod>
   </url><url>
+    <loc>https://yangqi.space/tags/live/</loc>
+    <lastmod>2023-04-23T18:26:08+08:00</lastmod>
+  </url><url>
     <loc>https://yangqi.space/post/</loc>
     <lastmod>2023-04-23T18:26:08+08:00</lastmod>
   </url><url>
@@ -12,9 +15,6 @@
     <lastmod>2023-04-23T18:26:08+08:00</lastmod>
   </url><url>
     <loc>https://yangqi.space/</loc>
-    <lastmod>2023-04-23T18:26:08+08:00</lastmod>
-  </url><url>
-    <loc>https://yangqi.space/tags/%E6%B8%B8%E8%AE%B0/</loc>
     <lastmod>2023-04-23T18:26:08+08:00</lastmod>
   </url><url>
     <loc>https://yangqi.space/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</loc>
@@ -26,7 +26,7 @@
     <loc>https://yangqi.space/about/</loc>
     <lastmod>2023-04-16T16:40:19+08:00</lastmod>
   </url><url>
-    <loc>https://yangqi.space/tags/golang/</loc>
+    <loc>https://yangqi.space/tags/rasbreey/</loc>
     <lastmod>2023-04-16T16:00:05+08:00</lastmod>
   </url><url>
     <loc>https://yangqi.space/categories/raspi/</loc>

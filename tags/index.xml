@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Terminal</title>
+    <title>Tags on Yangqi&#39;s blog</title>
     <link>https://yangqi.space/tags/</link>
-    <description>Recent content in Tags on Terminal</description>
+    <description>Recent content in Tags on Yangqi&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <copyright>&lt;span&gt;© 2023 Powered by &lt;a href=&#39;http://gohugo.io&#39;&gt;Hugo&lt;/a&gt;  ::  &lt;a href=&#39;https://beian.miit.gov.cn/&#39;&gt;蜀ICP备2021015564号-1&lt;/a&gt; &lt;/span&gt;</copyright>
     <lastBuildDate>Sun, 23 Apr 2023 18:26:08 +0800</lastBuildDate><atom:link href="https://yangqi.space/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>游记</title>
-      <link>https://yangqi.space/tags/%E6%B8%B8%E8%AE%B0/</link>
+      <title>live</title>
+      <link>https://yangqi.space/tags/live/</link>
       <pubDate>Sun, 23 Apr 2023 18:26:08 +0800</pubDate>
       
-      <guid>https://yangqi.space/tags/%E6%B8%B8%E8%AE%B0/</guid>
+      <guid>https://yangqi.space/tags/live/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
-      <title>golang</title>
-      <link>https://yangqi.space/tags/golang/</link>
+      <title>rasbreey</title>
+      <link>https://yangqi.space/tags/rasbreey/</link>
       <pubDate>Sun, 16 Apr 2023 16:00:05 +0800</pubDate>
       
-      <guid>https://yangqi.space/tags/golang/</guid>
+      <guid>https://yangqi.space/tags/rasbreey/</guid>
       <description></description>
       <content></content>
     </item>
