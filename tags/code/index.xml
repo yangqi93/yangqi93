@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>code on 冰淇淋的淇</title>
+    <link>https://yangqi.space/tags/code/</link>
+    <description>Recent content in code on 冰淇淋的淇</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&lt;span&gt;© 2023 微信订阅号:冰淇淋的淇  ::  &lt;a href=&#39;https://beian.miit.gov.cn/&#39;&gt;蜀ICP备2021015564号-1&lt;/a&gt; &lt;/span&gt;</copyright>
+    <lastBuildDate>Fri, 28 Apr 2023 12:52:45 +0800</lastBuildDate><atom:link href="https://yangqi.space/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>摸摸鱼 写写BUG</title>
+      <link>https://yangqi.space/post/code/bug/</link>
+      <pubDate>Fri, 28 Apr 2023 12:52:45 +0800</pubDate>
+      
+      <guid>https://yangqi.space/post/code/bug/</guid>
+      <description>💡 偶然间翻到了一篇多年前的笔记，无从知晓是从哪里转载的了，就让你出来晒晒太阳吧
+bug本质上是无法避免的，最好的办法不是不犯错，而是少犯错误，犯错之后尽快改正。最快的成长方法是不退步 bug的反复出现，有三个重要原因，粗心大意，认知偏差，熵增问题 认知偏差是错误的最大来源，思想错误，行动又怎么会正确呢 熵增问题，是随着复杂增高，而必然有更高概率发生bug 应对这些问题，我们要从各方面吸取教训，其中最重要的是优化方法和塑造环境：
+:) 粗心大意，可以通过流程和工具来减少，建议补充代码单元测试
+:) 认知偏差，可以通过团队和技术手段来纠偏
+:) 熵增问题，通过业界不断迭代更新流行的框架模式来解决
+:) 塑造环境，塑造一个正视错误，改正错误的环境</description>
+      <content>&lt;blockquote&gt;
+&lt;p&gt;💡 偶然间翻到了一篇多年前的笔记，无从知晓是从哪里转载的了，就让你出来晒晒太阳吧&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;bug本质上是无法避免的，最好的办法不是不犯错，而是少犯错误，犯错之后尽快改正。最快的成长方法是不退步&lt;/li&gt;
+&lt;li&gt;bug的反复出现，有三个重要原因，粗心大意，认知偏差，熵增问题&lt;/li&gt;
+&lt;li&gt;认知偏差是错误的最大来源，思想错误，行动又怎么会正确呢&lt;/li&gt;
+&lt;li&gt;熵增问题，是随着复杂增高，而必然有更高概率发生bug&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;应对这些问题，我们要从各方面吸取教训，其中最重要的是优化方法和塑造环境：&lt;/p&gt;
+&lt;p&gt;:) 粗心大意，可以通过流程和工具来减少，建议补充代码单元测试&lt;/p&gt;
+&lt;p&gt;:) 认知偏差，可以通过团队和技术手段来纠偏&lt;/p&gt;
+&lt;p&gt;:) 熵增问题，通过业界不断迭代更新流行的框架模式来解决&lt;/p&gt;
+&lt;p&gt;:) 塑造环境，塑造一个正视错误，改正错误的环境&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>
