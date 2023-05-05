@@ -7,7 +7,81 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&lt;span&gt;© 2023 微信订阅号:冰淇淋的淇  ::  &lt;a href=&#39;https://beian.miit.gov.cn/&#39;&gt;蜀ICP备2021015564号-1&lt;/a&gt; &lt;/span&gt;</copyright>
-    <lastBuildDate>Fri, 28 Apr 2023 12:59:05 +0800</lastBuildDate><atom:link href="https://yangqi.space/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 May 2023 12:17:38 +0800</lastBuildDate><atom:link href="https://yangqi.space/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>树莓派 WebUI 仪表盘</title>
+      <link>https://yangqi.space/post/code/raspberry-dashboard/</link>
+      <pubDate>Fri, 05 May 2023 12:17:38 +0800</pubDate>
+      
+      <guid>https://yangqi.space/post/code/raspberry-dashboard/</guid>
+      <description>Description rasberry-dashboard 参考了 rpi-dashboard 的设计和 WebUi，使用了 Go 语言的方式实现了相同的功能。
+Pi Dashboard (Pi 仪表盘) 是一个开源的 IoT 设备监控工具，目前主要针对树莓派平台，也尽可能兼容其他类树莓派硬件产品。你只需要在树莓派上安装好 Docker 环境，即可方便的部署一个 Pi 仪表盘，通过炫酷的 WebUI 来监控树莓派的状态！
+目前已加入的监测项目有：
+CPU 基本信息、状态和使用率等实时数据
+内存、缓存、SWAP分区使用的实时数据
+SD卡（磁盘）的占用情况
+实时负载数据
+实施进程数据
+网络接口的实时数据
+树莓派IP、运行时间、操作系统、HOST 等基础信息
+Rreview Install touch conf/config.yaml vim config.yaml hostName: xxx.xxx.com vim docker-compose.yaml version: &amp;#34;3.7&amp;#34; services: app: image: yangqigo/go-pi-dashboard restart: always volumes: - ./conf:/conf - ./logs:/logs ports: - &amp;#34;1024:9001&amp;#34; docker-compose up -d open http://yourip:1024 欢迎参与项目的改进和完善 🎉 Github Source</description>
+      <content>&lt;h2 id=&#34;description&#34;&gt;Description&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/yangqi93/raspberry-dashboard&#34;&gt;rasberry-dashboard&lt;/a&gt; 参考了 &lt;a href=&#34;https://github.com/nxez/pi-dashboard&#34;&gt;rpi-dashboard&lt;/a&gt; 的设计和 WebUi，使用了 Go 语言的方式实现了相同的功能。&lt;/p&gt;
+&lt;p&gt;Pi Dashboard (Pi 仪表盘) 是一个开源的 IoT 设备监控工具，目前主要针对树莓派平台，也尽可能兼容其他类树莓派硬件产品。你只需要在树莓派上安装好 Docker 环境，即可方便的部署一个 Pi 仪表盘，通过炫酷的 WebUI 来监控树莓派的状态！&lt;/p&gt;
+&lt;p&gt;目前已加入的监测项目有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;CPU 基本信息、状态和使用率等实时数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;内存、缓存、SWAP分区使用的实时数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SD卡（磁盘）的占用情况&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实时负载数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实施进程数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网络接口的实时数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;树莓派IP、运行时间、操作系统、HOST 等基础信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;rreview&#34;&gt;Rreview&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/14936391/236113344-cfcd72ab-9c54-40fa-84ec-6e1e62d91491.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;install&#34;&gt;Install&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;touch conf/config.yaml&lt;/li&gt;
+&lt;li&gt;vim config.yaml&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#f92672&#34;&gt;hostName&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;xxx.xxx.com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;vim docker-compose.yaml&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;version&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;3.7&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;services&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;app&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;image&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;yangqigo/go-pi-dashboard&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;restart&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;always&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;./conf:/conf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;./logs:/logs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;ports&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1024:9001&amp;#34;&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;docker-compose up -d&lt;/li&gt;
+&lt;li&gt;open http://yourip:1024&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;欢迎参与项目的改进和完善-&#34;&gt;欢迎参与项目的改进和完善 🎉&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/yangqi93/raspberry-dashboard&#34;&gt;Github Source&lt;/a&gt;&lt;/p&gt;
+</content>
+    </item>
+    
     <item>
       <title>《三峡好人》观后感</title>
       <link>https://yangqi.space/post/movie/san-xia-hao-ren/</link>

@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://yangqi.space/tags/code/</loc>
+    <lastmod>2023-05-05T12:17:38+08:00</lastmod>
+  </url><url>
+    <loc>https://yangqi.space/post/</loc>
+    <lastmod>2023-05-05T12:17:38+08:00</lastmod>
+  </url><url>
+    <loc>https://yangqi.space/tags/</loc>
+    <lastmod>2023-05-05T12:17:38+08:00</lastmod>
+  </url><url>
+    <loc>https://yangqi.space/</loc>
+    <lastmod>2023-05-05T12:17:38+08:00</lastmod>
+  </url><url>
+    <loc>https://yangqi.space/post/code/raspberry-dashboard/</loc>
+    <lastmod>2023-05-05T12:17:38+08:00</lastmod>
+  </url><url>
     <loc>https://yangqi.space/post/movie/san-xia-hao-ren/</loc>
     <lastmod>2023-04-28T12:59:05+08:00</lastmod>
   </url><url>
     <loc>https://yangqi.space/tags/movie/</loc>
-    <lastmod>2023-04-28T12:59:05+08:00</lastmod>
-  </url><url>
-    <loc>https://yangqi.space/post/</loc>
-    <lastmod>2023-04-28T12:59:05+08:00</lastmod>
-  </url><url>
-    <loc>https://yangqi.space/tags/</loc>
-    <lastmod>2023-04-28T12:59:05+08:00</lastmod>
-  </url><url>
-    <loc>https://yangqi.space/</loc>
     <lastmod>2023-04-28T12:59:05+08:00</lastmod>
   </url><url>
     <loc>https://yangqi.space/tags/book/</loc>
@@ -28,9 +34,6 @@
   </url><url>
     <loc>https://yangqi.space/post/book/courage/</loc>
     <lastmod>2023-04-28T12:55:52+08:00</lastmod>
-  </url><url>
-    <loc>https://yangqi.space/tags/code/</loc>
-    <lastmod>2023-04-28T12:52:45+08:00</lastmod>
   </url><url>
     <loc>https://yangqi.space/post/code/bug/</loc>
     <lastmod>2023-04-28T12:52:45+08:00</lastmod>

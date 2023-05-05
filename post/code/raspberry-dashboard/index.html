@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>树莓派 WebUI 仪表盘 :: 冰淇淋的淇</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pi Dashboard (Pi 仪表盘) 是一个开源的 IoT 设备监控工具，目前主要针对树莓派平台，也尽可能兼容其他类树莓派硬件产品。你只需要在树莓派上安装好 Docker 环境，即可方便的部署一个 Pi 仪表盘，通过炫酷的 WebUI 来监控树莓派的状态！" />
+<meta name="keywords" content="树莓派, WebUI, 仪表盘" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="https://yangqi.space/post/code/raspberry-dashboard/" />
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H6FMRW2XYH"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-H6FMRW2XYH');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9905250079776976"
+        crossorigin="anonymous"></script>
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://yangqi.space/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="https://yangqi.space/img/theme-colors/orange.png">
+  <link rel="apple-touch-icon" href="https://yangqi.space/img/theme-colors/orange.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="树莓派 WebUI 仪表盘">
+<meta property="og:description" content="Pi Dashboard (Pi 仪表盘) 是一个开源的 IoT 设备监控工具，目前主要针对树莓派平台，也尽可能兼容其他类树莓派硬件产品。你只需要在树莓派上安装好 Docker 环境，即可方便的部署一个 Pi 仪表盘，通过炫酷的 WebUI 来监控树莓派的状态！" />
+<meta property="og:url" content="https://yangqi.space/post/code/raspberry-dashboard/" />
+<meta property="og:site_name" content="冰淇淋的淇" />
+
+  
+    <meta property="og:image" content="https://yangqi.space/img/favicon/orange.png">
+  
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2023-05-05 12:17:38 &#43;0800 CST" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="orange">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    冰淇淋的淇
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/tags/live">Live</a></li>
+        
+      
+        
+          <li><a href="/tags">Tags</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about" >About</a></li>
+        
+      
+        
+          <li><a href="/tags/live" >Live</a></li>
+        
+      
+        
+          <li><a href="/tags" >Tags</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://yangqi.space/post/code/raspberry-dashboard/">树莓派 WebUI 仪表盘</a>
+  </h1>
+  <div class="post-meta">
+    
+      <time class="post-date">
+        2023-05-05 ::
+        
+      </time>
+    
+    
+    
+  </div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="https://yangqi.space/tags/code/">code</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h2 id="description">Description<a href="#description" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p><a href="https://github.com/yangqi93/raspberry-dashboard">rasberry-dashboard</a> 参考了 <a href="https://github.com/nxez/pi-dashboard">rpi-dashboard</a> 的设计和 WebUi，使用了 Go 语言的方式实现了相同的功能。</p>
+<p>Pi Dashboard (Pi 仪表盘) 是一个开源的 IoT 设备监控工具，目前主要针对树莓派平台，也尽可能兼容其他类树莓派硬件产品。你只需要在树莓派上安装好 Docker 环境，即可方便的部署一个 Pi 仪表盘，通过炫酷的 WebUI 来监控树莓派的状态！</p>
+<p>目前已加入的监测项目有：</p>
+<ul>
+<li>
+<p>CPU 基本信息、状态和使用率等实时数据</p>
+</li>
+<li>
+<p>内存、缓存、SWAP分区使用的实时数据</p>
+</li>
+<li>
+<p>SD卡（磁盘）的占用情况</p>
+</li>
+<li>
+<p>实时负载数据</p>
+</li>
+<li>
+<p>实施进程数据</p>
+</li>
+<li>
+<p>网络接口的实时数据</p>
+</li>
+<li>
+<p>树莓派IP、运行时间、操作系统、HOST 等基础信息</p>
+</li>
+</ul>
+<h2 id="rreview">Rreview<a href="#rreview" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p><img src="https://user-images.githubusercontent.com/14936391/236113344-cfcd72ab-9c54-40fa-84ec-6e1e62d91491.png" alt="image"></p>
+<h2 id="install">Install<a href="#install" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<ol>
+<li>touch conf/config.yaml</li>
+<li>vim config.yaml</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>     <span style="color:#f92672">hostName</span>: <span style="color:#ae81ff">xxx.xxx.com</span>
+</span></span></code></pre></div><ol start="3">
+<li>vim docker-compose.yaml</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3.7&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">app</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">yangqigo/go-pi-dashboard</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./conf:/conf</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./logs:/logs</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;1024:9001&#34;</span> 
+</span></span></code></pre></div><ol start="4">
+<li>docker-compose up -d</li>
+<li>open http://yourip:1024</li>
+</ol>
+<h2 id="欢迎参与项目的改进和完善-">欢迎参与项目的改进和完善 🎉<a href="#欢迎参与项目的改进和完善-" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p><a href="https://github.com/yangqi93/raspberry-dashboard">Github Source</a></p>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        
+        <span class="button next">
+            <a href="https://yangqi.space/post/movie/san-xia-hao-ren/">
+                <span class="button__text">《三峡好人》观后感</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span><span>© 2023 微信订阅号:冰淇淋的淇  ::  <a href='https://beian.miit.gov.cn/'>蜀ICP备2021015564号-1</a> </span></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
