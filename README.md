@@ -1,6 +1,6 @@
 ![浏览量统计](https://komarev.com/ghpvc/?username=yangqi93)</br>
 ![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=yangqi93&count_private=true)</br>
-![语言统计](https://github-readme-stats.vercel.app/api/top-langs/?username=yangqi93&layout=compact)
+
 
 <!--
 **simplepeng/simplepeng** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
